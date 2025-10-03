@@ -17,7 +17,7 @@ public class Referral {
     @ManyToOne
     @JoinColumn(name = "referred_id", nullable = false)
     private User referred;
-    
+
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 
