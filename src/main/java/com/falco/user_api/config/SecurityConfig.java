@@ -31,12 +31,12 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/users").permitAll()            // POST /users (registro)
-                        .requestMatchers("/auth/**").permitAll()          // login
+                        .requestMatchers("/users").permitAll()
+                        .requestMatchers("/auth/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(jwtFilter, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter.class)
-                .httpBasic(customizer -> {}); // desnecessário em produção se usar JWT, mas ok para testes
+                .httpBasic(customizer -> {});
 
         return http.build();
     }
@@ -46,7 +46,6 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
-    // Para AuthenticationManager uso padrão (delegado ao AuthenticationConfiguration)
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
         return authenticationConfiguration.getAuthenticationManager();
