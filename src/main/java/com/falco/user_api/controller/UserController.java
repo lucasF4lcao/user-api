@@ -4,6 +4,7 @@ import com.falco.user_api.dto.UserRequest;
 import com.falco.user_api.dto.UserResponse;
 import com.falco.user_api.service.UserService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -23,7 +24,13 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<UserResponse> getUserProfile(@PathVariable Long id) {
+    public ResponseEntity<UserResponse> getUserProfile(@PathVariable Long id, Authentication authentication) {
+        Long loggedInUserId = ((com.falco.user_api.security.UserPrincipal) authentication.getPrincipal()).getId();
+
+        if (!id.equals(loggedInUserId)) {
+            return ResponseEntity.status(403).build();
+        }
+
         UserResponse response = userService.getUserProfile(id);
         return ResponseEntity.ok(response);
     }
