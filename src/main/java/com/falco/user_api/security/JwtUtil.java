@@ -1,6 +1,5 @@
 package com.falco.user_api.security;
 
-import io.github.cdimascio.dotenv.Dotenv;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.stereotype.Component;
@@ -14,9 +13,8 @@ public class JwtUtil {
     private final Key key;
     private final long expirationMs = 3600000;
 
-    public JwtUtil(Dotenv dotenv) {
-        String secret = dotenv.get("JWT_SECRET");
-        this.key = Keys.hmacShaKeyFor(secret.getBytes());
+    public JwtUtil() {
+        this.key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
     }
 
     public String generateToken(UserPrincipal principal) {
