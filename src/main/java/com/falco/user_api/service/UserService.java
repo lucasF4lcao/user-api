@@ -53,13 +53,19 @@ public class UserService {
             }
         }
 
-        return new UserResponse(user.getName(), user.getPoints(), user.getReferralCode());
+        return new UserResponse(user.getId(), user.getName(), user.getEmail(), user.getPoints(), user.getReferralCode());
     }
 
     public UserResponse getUserProfile(Long id) {
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Usuário não encontrado"));
-        return new UserResponse(user.getName(), user.getPoints(), user.getReferralCode());
+        return new UserResponse(user.getId(), user.getName(), user.getEmail(), user.getPoints(), user.getReferralCode());
+    }
+
+    public UserResponse getUserByEmail(String email) {
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
+        return new UserResponse(user.getId(), user.getName(), user.getEmail(), user.getPoints(), user.getReferralCode());
     }
 
     private String generateReferralCode() {

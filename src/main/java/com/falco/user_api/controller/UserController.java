@@ -34,4 +34,11 @@ public class UserController {
         UserResponse response = userService.getUserProfile(id);
         return ResponseEntity.ok(response);
     }
+
+    @GetMapping("/auth/me")
+    public ResponseEntity<UserResponse> getCurrentUser(Authentication authentication) {
+        String email = authentication.getName();
+        UserResponse response = userService.getUserByEmail(email);
+        return ResponseEntity.ok(response);
+    }
 }
