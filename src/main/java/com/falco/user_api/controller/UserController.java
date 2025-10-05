@@ -22,18 +22,7 @@ public class UserController {
         UserResponse response = userService.createUser(request);
         return ResponseEntity.ok(response);
     }
-
-    @GetMapping("/{id}")
-    public ResponseEntity<UserResponse> getUserProfile(@PathVariable Long id, Authentication authentication) {
-        Long loggedInUserId = ((com.falco.user_api.security.UserPrincipal) authentication.getPrincipal()).getId();
-
-        if (!id.equals(loggedInUserId)) {
-            return ResponseEntity.status(403).build();
-        }
-
-        UserResponse response = userService.getUserProfile(id);
-        return ResponseEntity.ok(response);
-    }
+    
 
     @GetMapping("/auth/me")
     public ResponseEntity<UserResponse> getCurrentUser(Authentication authentication) {
