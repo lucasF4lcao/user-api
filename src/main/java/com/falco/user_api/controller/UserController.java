@@ -22,7 +22,7 @@ public class UserController {
         UserResponse response = userService.createUser(request);
         return ResponseEntity.ok(response);
     }
-    
+
 
     @GetMapping("/auth/me")
     public ResponseEntity<UserResponse> getCurrentUser(Authentication authentication) {
