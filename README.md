@@ -24,7 +24,7 @@ Cada usuário possui um código único de indicação: sempre que alguém se cad
 - Railway: hospedagem da API, Front e do banco de dados em nuvem
 ## Rodando localmente
 Clonar o repositório:
-```http
+```bash
 git clone https://github.com/lucasF4lcao/user-api.git 
     
 cd user-api
@@ -32,16 +32,20 @@ cd user-api
 Configurar o banco MySQL:
 - Crie um banco no MySQL
 - Atualize as credenciais no arquivo src/main/resources/application.properties:
-```http
+```java
 spring.datasource.url=${SPRING_DATASOURCE_URL}
 spring.datasource.username=${SPRING_DATASOURCE_USERNAME}
 spring.datasource.password=${SPRING_DATASOURCE_PASSWORD}
 ```
 Rodar:
-```http
+```bash
 ./mvnw spring-boot:run
 ```
-    
+## Acesso ao projeto
+
+A API está hospedada no Railway e disponível publicamente:
+
+https://user-api-production-49af.up.railway.app/
     
 ## Documentação da API
 
@@ -95,7 +99,7 @@ GET /users/auth/me
 
 | Parâmetro   | Tipo       | Descrição                                   |
 | :---------- | :--------- | :------------------------------------------ |
-| `token`      | `Bearer` | **Obrigatório**. token-gerado |
+| `token`      | `Bearer` | token-gerado |
 
 Resposta:
 ```http
