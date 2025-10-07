@@ -65,9 +65,10 @@ POST /users
 Resposta:
 ```http  
 {
+  "id": 1,
   "name": "João Silva",
   "email": "joao@email.com",
-  "password": "senha123",
+  "points": 0,
   "referralCode": "abcd1234"
 }
 ```
