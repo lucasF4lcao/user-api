@@ -112,26 +112,3 @@ Resposta:
   "referralCode": "abcd1234"
 }
 ```
-
-## Colaboração com IA
-
-Durante o desenvolvimento desta API, contei com o auxílio de ferramentas de IA para otimizar diferentes aspectos do projeto, principalmente na segurança. Eu utilizei apenas o ChatGPT e os principais pontos são:
-
-#### Segurança e autenticação
-
-- Orientações sobre JWT (JSON Web Tokens) para autenticação segura.
-- Implementação de geração e validação de tokens.
-- Proteção de rotas sensíveis, garantindo que cada usuário acesse apenas seus próprios dados.
-- Dicas sobre armazenamento seguro de tokens no front-end.
-
-#### Organização do projeto
-
-- Me ajudou na padronização e nomeação de classes, métodos e endpoints.
-- Estruturação da API e separação de responsabilidades entre camadas (controller, service, repository).
-
-#### Documentação
-
-- Auxílio na estruturação do README, deixando as informações sobre o projeto, instalação e uso mais claras e organizadas.
-
-#### Aprendizado e boas práticas
-- Ela Tornou o desenvolvimento mais rápido, evitando erros comuns e me ensinou conceitos essenciais de organização de APIs e, principalmente, de segurança.
